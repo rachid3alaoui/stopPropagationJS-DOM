@@ -1,0 +1,52 @@
+<html>
+  <head> </head>
+  <style>
+    body {
+      padding: 50px;
+    }
+
+    article {
+      margin: auto;
+      width: 300px;
+      padding: 20px;
+      border: 1px solid black;
+    }
+
+    .link {
+      float: right;
+      margin-left: 30px;
+    }
+
+    span {
+      margin: 10px;
+    }
+  </style>
+  <body>
+    <article id="parent">
+      <a class="link" id="child" href="#">Cliquez ici</a>
+      <p>Battle d'événement !</p>
+      Parent : <span id="parent-count">0</span> Enfant :
+      <span id="child-count">0</span>
+    </article>
+
+    <script>
+      const parent = document.querySelector('#parent');
+      const child = document.querySelector('#child');
+      const parentCount = document.querySelector('#parent-count');
+      const childCount = document.querySelector('#child-count');
+      let counterParent = 0;
+      let counterChild = 0;
+      parent.addEventListener('click', () => {
+        counterParent++;
+        parentCount.textContent = counterParent;
+      });
+
+      child.addEventListener('click', (e) => {
+        e.stopPropagation();
+        e.preventDefault();
+        counterChild++;
+        childCount.textContent = counterChild;
+      });
+    </script>
+  </body>
+</html>
